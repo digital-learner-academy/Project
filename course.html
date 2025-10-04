@@ -1,0 +1,41 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Details</title>
+</head>
+<body>
+  <h1 id="courseTitle"></h1>
+  <p id="courseDescription"></p>
+
+  <script>
+    // 1️⃣ URL से ID निकालो
+    const params = new URLSearchParams(window.location.search);
+    const courseId = params.get("id");
+
+    // 2️⃣ कोर्स की जानकारी
+    const courses = {
+      "html": {
+        title: "HTML Course | Digital Learner Academy",
+        description: "इस कोर्स में आप HTML की बेसिक से लेकर एडवांस तक सीखेंगे।"
+      },
+      "word": {
+        title: "Microsoft Word Course | Digital Learner Academy",
+        description: "इस कोर्स में आप Word को प्रोफेशनली इस्तेमाल करना सीखेंगे।"
+      }
+    };
+
+    // 3️⃣ अगर सही कोर्स मिला तो दिखाओ
+    if (courses[courseId]) {
+      document.title = courses[courseId].title;
+      document.getElementById("courseTitle").textContent = courses[courseId].title;
+      document.getElementById("courseDescription").textContent = courses[courseId].description;
+    } 
+    // 4️⃣ नहीं मिला तो मैसेज दिखाओ
+    else {
+      document.getElementById("courseTitle").textContent = "Course Not Found!";
+      document.getElementById("courseDescription").textContent = "यह कोर्स अभी उपलब्ध नहीं है।";
+    }
+  </script>
+</body>
+</html>
